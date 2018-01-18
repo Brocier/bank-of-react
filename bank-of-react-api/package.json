@@ -2,6 +2,9 @@
   "name": "bank-of-react-api",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": "8.9.4"
+  },
   "scripts": {
     "start": "node app.js",
     "dev": "concurrently \"nodemon app.js\" \"cd ./client  && npm start \" ",
