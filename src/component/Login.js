@@ -3,15 +3,12 @@ import React, {Component} from 'react'
 import {Redirect} from 'react-router-dom'
 
 class LogIn extends Component {
-  constructor() {
-    super()
-    this.state = {
-      user: {
-        userName: '',
-        password: ''
-      },
-      redirect: false
-    }
+  state = {
+    user: {
+      userName: '',
+      password: ''
+    },
+    redirect: false
   }
 
   handleChange = (event) => {
@@ -29,7 +26,7 @@ class LogIn extends Component {
     event.preventDefault()
     this
       .props
-      .mockLogIn(this.state.user)
+      .pretendLogIn(this.state.user)
     this.setState({redirect: true})
   }
 

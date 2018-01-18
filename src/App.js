@@ -11,7 +11,7 @@ class App extends Component {
       memberSince: '08/23/99'
     }
   }
-  mockLogIn = (logInInfo) => {
+  pretendLogIn = (logInInfo) => {
     const newUser = {
       ...this.state.currentUser
     }
@@ -27,7 +27,7 @@ class App extends Component {
       memberSince={this.state.currentUser.memberSince}/>)
     const LogInComponent = () => (<LogIn
       user={this.state.currentUser}
-      mockLogIn={this.mockLogIn}
+      pretendLogIn={this.pretendLogIn}
       {...this.props}/>)
     return (
       <Router>
