@@ -6,6 +6,16 @@ import {Link} from 'react-router-dom'
 import axios from 'axios'
 
 class Home extends Component {
+  state = {
+    debit: [],
+    credit: []
+  }
+
+  async componentWillMount() {
+    const response = await axios.get('/api/debit')
+    this.setState({debit: response.data})
+  }
+
   render() {
     return (
       <div>
