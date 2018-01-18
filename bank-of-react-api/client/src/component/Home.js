@@ -3,6 +3,7 @@
 import React, {Component} from 'react';
 import AccountBalance from './AccountBalance.js'
 import {Link} from 'react-router-dom'
+import axios from 'axios'
 
 class Home extends Component {
   render() {
