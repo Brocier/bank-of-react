@@ -13,9 +13,12 @@ class Home extends Component {
           src="https://letstalkpayments.com/wp-content/uploads/2016/04/Bank.png"
           alt="bank"/>
         <h1>Bank of React</h1>
-
-        <Link to="/userProfile">User Profile</Link>
-
+        <div>
+          <Link to="/userProfile">User Profile</Link>
+        </div>
+        <div>
+          <Link to="/login">Log In</Link>
+        </div>
         <AccountBalance accountBalance={this.props.accountBalance}/>
       </div>
     );
