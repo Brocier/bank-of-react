@@ -24,6 +24,7 @@ class App extends Component {
       .get('http://localhost:4000/debits')
       .then((response) => {
         const debits = response.data
+
         this.setState({debits})
       })
   }
@@ -33,6 +34,7 @@ class App extends Component {
       .get('http://localhost:4000/credits')
       .then((response) => {
         const credits = response.data
+
         this.setState({credits})
       })
   }
@@ -50,7 +52,11 @@ class App extends Component {
       .reduce((totalDebits, credit) => {
         return totalDebits + credit.amount
       }, 0)
-    return totalCredits - totalDebits
+    const precisionRound = (number, precision) => {
+      const factor = Math.pow(10, precision);
+      return Math.round(number * factor) / factor;
+    }
+    return precisionRound((totalCredits - totalDebits), 2)
   }
 
   addNewDebit = (newDebit) => {
@@ -104,16 +110,18 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Link to="/">Home</Link>
-          <Link to="/login">Log In</Link>
+          <div>
+            <Link to="/">Home</Link>
+            <Link to="/login">Log In</Link>
+          </div>
+          <Switch>
+            <Route exact path="/" render={HomeComponent}/>
+            <Route exact path="/userProfile" render={UserProfileComponent}/>
+            <Route exact path="/login" render={LogInComponent}/>
+            <Route exact path="/debits" render={DebitsPageComponent}/>
+            <Route exact path="/credits" render={CreditsPageComponent}/>
+          </Switch>
         </div>
-        <Switch>
-          <Route exact path="/" render={HomeComponent}/>
-          <Route exact path="/userProfile" render={UserProfileComponent}/>
-          <Route exact path="/login" render={LogInComponent}/>
-          <Route exact path="/debits" render={DebitsPageComponent}/>
-          <Route exact path="/credits" render={CreditsPageComponent}/>
-        </Switch>
       </Router>
     )
   }
