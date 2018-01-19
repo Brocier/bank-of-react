@@ -3,19 +3,8 @@
 import React, {Component} from 'react';
 import AccountBalance from './AccountBalance.js'
 import {Link} from 'react-router-dom'
-import axios from 'axios'
 
 class Home extends Component {
-  state = {
-    debit: [],
-    credit: []
-  }
-
-  async componentWillMount() {
-    const response = await axios.get('/api/debit')
-    this.setState({debit: response.data})
-  }
-
   render() {
     return (
       <div>
@@ -26,6 +15,12 @@ class Home extends Component {
         <h1>Bank of React</h1>
         <div>
           <Link to="/userProfile">User Profile</Link>
+        </div>
+        <div>
+          <Link to="/debits">Debits</Link>
+        </div>
+        <div>
+          <Link to="/credits">Credits</Link>
         </div>
         <div>
           <Link to="/login">Log In</Link>
